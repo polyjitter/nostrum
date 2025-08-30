@@ -83,6 +83,13 @@ defmodule Nostrum.Struct.ApplicationCommand do
         }
 
   @typedoc """
+  The integration type for applications and application commands
+  - `0` for `GUILD_INSTALL` - Command can be used when installed to a server
+  - `1` for `USER_INSTALL` - Command can be used when installed to a user
+  """
+  @type integration_type :: 0..1
+
+  @typedoc """
   The context type for interactions
   - `0` for `GUILD` - Interaction can be used within servers
   - `1` for `BOT_DM` - Interaction can be used within DMs with the app's bot user
@@ -103,7 +110,9 @@ defmodule Nostrum.Struct.ApplicationCommand do
           required(:description) => command_description(),
           optional(:type) => command_type(),
           optional(:default_permission) => boolean(),
+          optional(:nsfw) => boolean(),
           optional(:options) => [command_option()],
+          optional(:integration_types) => [integration_type()],
           optional(:contexts) => [interaction_context_type()]
         }
 
