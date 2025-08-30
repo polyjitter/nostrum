@@ -123,8 +123,11 @@ defmodule Nostrum.Struct.ApplicationCommand do
   @type application_command_edit_map :: %{
           optional(:name) => command_name(),
           optional(:description) => command_description(),
+          optional(:default_permission) => boolean(),
+          optional(:nsfw) => boolean(),
           optional(:options) => [command_option()],
-          optional(:default_permission) => boolean()
+          optional(:integration_types) => [integration_type()],
+          optional(:contexts) => [interaction_context_type()]
         }
 
   @typedoc """
